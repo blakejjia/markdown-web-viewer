@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📝 Modern Markdown Web Viewer
 
-## Getting Started
+A sleek, high-performance, and feature-rich Markdown viewer built with **Next.js 15+** and **React**. Designed for readability and professional documentation presentation.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)
 
+## ✨ Key Features
+
+- **🚀 Server-Side Rendering**: Instant loading with Next.js App Router and Suspense.
+- **📊 GFM Support**: Full support for GitHub Flavored Markdown, including beautifully styled tables and task lists.
+- **🔍 Image Lightbox**: Interactive full-screen image preview with glassmorphism effects and smooth transitions.
+- **💾 Direct Download**: One-click button to download images directly from the lightbox.
+- **📍 Smart Navigation**: Left-aligned, sticky Table of Contents (ToC) for easy document browsing.
+- **🎨 Premium UI**: Modern aesthetic with Geist typography, subtle gradients, and dark mode support.
+- **📱 Responsive Design**: Fully optimized for mobile, tablet, and desktop viewing.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Rendering**: [React Markdown](https://github.com/remarkjs/react-markdown)
+- **Markdown Plugins**: `remark-gfm`, `rehype-raw`
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with `@tailwindcss/typography`
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/markdown-web-viewer.git
+cd markdown-web-viewer
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Run the development server
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📖 Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The viewer fetches Markdown content via a URL parameter. You can use it by navigating to:
 
-## Learn More
+`http://localhost:3000/viewer?md=YOUR_MARKDOWN_URL`
 
-To learn more about Next.js, take a look at the following resources:
+**Example:**
+`http://localhost:3000/viewer?md=https://raw.githubusercontent.com/unicode-org/cldr/master/README.md`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Contributions are welcome! Feel free to open an issue or submit a pull request.
 
-## Deploy on Vercel
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📄 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
