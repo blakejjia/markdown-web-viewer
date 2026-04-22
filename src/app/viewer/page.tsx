@@ -18,7 +18,7 @@ async function MarkdownFetcher({ url }: { url: string }) {
     const content = await response.text();
 
     return (
-      <div className="w-full px-4 sm:px-8 py-8">
+      <div className="w-full">
         <MarkdownRenderer content={content} />
       </div>
     );
