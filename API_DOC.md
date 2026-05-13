@@ -1,58 +1,44 @@
 # API Documentation: Markdown Web Viewer
 
-This project provides a simple and fast way to render Markdown documents into styled, static HTML.
+The Markdown Web Viewer provides a stateless way to render Markdown documents. It supports both remote file fetching and direct Base64 content rendering.
 
-## 1. POST Rendering API
+## 1. Remote URL Rendering
 
-Render a raw Markdown string directly into a complete, styled HTML document.
+View a remote Markdown file by providing its URL as a query parameter.
 
-- **Endpoint**: `/api/render`
-- **Method**: `POST`
-- **Content-Type**: `text/plain` or `application/x-www-form-urlencoded`
-
-### Request Body
-The raw Markdown text you want to render.
-
-### Response
-- **Content-Type**: `text/html; charset=utf-8`
-- **Success (200 OK)**: Returns a complete HTML5 document including:
-  - Responsive layout (max-width 56rem).
-  - Tailwind Typography (Prose) styling.
-  - Automatic light/dark mode support based on system settings.
-  - Images converted to clickable links (🖼️ View Image).
-  - Syntax highlighting for code blocks.
-- **Error (400 Bad Request)**: If no content is provided in the body.
-- **Error (500 Internal Server Error)**: If rendering fails.
-
-### Example Usage (cURL)
-```bash
-curl -X POST -H "Content-Type: text/plain" \
-     -d "# Hello World\nThis is **bold** and this is an [image](https://example.com/a.jpg)" \
-     https://your-domain.com/api/render
-```
-
----
-
-## 2. GET Viewer Interface
-
-View a remote Markdown file by providing its URL.
-
-- **URL**: `/viewer`
+- **URL**: `/?url=` or `/?md=`
 - **Method**: `GET`
-- **Parameters**:
-  - `md` (required): The URL-encoded link to a raw `.md` file.
+- **Priority**: This parameter takes precedence over direct content.
 
 ### Example Usage
 ```text
-https://your-domain.com/viewer?md=https://raw.githubusercontent.com/user/repo/main/README.md
+https://your-domain.com/?url=https://raw.githubusercontent.com/user/repo/main/README.md
 ```
+
+## 2. Direct Base64 Rendering
+
+Render Markdown content directly by passing a Base64-encoded string.
+
+- **URL**: `/?content=`
+- **Method**: `GET`
+- **Format**: Standard Base64 or URL-safe Base64.
+
+### Example Usage
+```text
+https://your-domain.com/?content=IyBIZWxsbyBXb3JsZAoKVGhpcyBpcyBtYXJrZG93biE=
+```
+*(The above encodes `# Hello World\n\nThis is markdown!`)*
 
 ---
 
-## Technical Features (Static Mode)
+## Technical Features
 
-The system currently operates in a **Pure Static Mode**:
-- **Zero Client-Side JS**: The rendered output is purely HTML/CSS.
-- **Image Handling**: All `<img>` tags are automatically transformed into `<a>` tags to prevent heavy image loading and provide a clean document view.
-- **Styling**: Uses Tailwind CSS via CDN in the API response for zero-config integration.
-- **Security**: Uses `remark` and `rehype` for safe and standardized parsing.
+- **Instant Rendering**: Base64 content is decoded and rendered server-side for zero-latency display.
+- **Loading States**: Remote URLs display a beautiful loading spinner while fetching.
+- **Premium UI**: 
+  - Responsive layout.
+  - Tailwind Typography (Prose) styling.
+  - Automatic light/dark mode.
+  - Shiki syntax highlighting.
+  - Interactive image lightbox.
+  - Table of Contents.
